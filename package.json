@@ -1,0 +1,32 @@
+{
+  "name": "email-template-using-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsblend/email-template-using-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsblend/email-template-using-nodejs/issues"
+  },
+  "homepage": "https://github.com/jsblend/email-template-using-nodejs#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.6.0",
+    "nodemailer-express-handlebars": "^4.0.0",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,0 +1,146 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form action="/sendmail" method="POST" id="add_user">
+        <div class="new_user">
+            <div class="form-group">
+                <label for="name" class="text-light">Time</label>
+                
+                <input type="time" name="timevalue" value="" >
+            </div>
+           
+    
+            <div class="form-group">
+                <button type="submit" class="btn text-dark update">Save</button>
+            </div>
+    
+        </div>
+    </form>
+
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+</head>
+
+<style>
+ #time {
+    font-size: 36px;
+    color: white;
+ }
+#alarm{
+    color: white;
+}
+ #alarm-time{
+ 
+    width: 200px;
+ }
+
+ 
+
+  .block{
+    display: grid;
+    place-items: center;
+    border: 1px solid white;
+    height: 350px;
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+  }
+
+
+
+  body{
+    background-image: url("https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&w=600");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  
+  
+</style>
+<body  >
+
+   
+    <form action="/sendmail" method="POST" id="add_user">
+        <div class="block">
+            <p id="time"></p>
+            
+            
+            <p id="alarm"></p>
+            <h2 style="color: white;">Email will be sent at <%= hours %> : <%= minutes %></h2>
+           
+        </div>
+    </form>
+
+
+
+<script>
+  function setAlarm() {
+    var alarmTime = new Date();
+    var inputTime = document.getElementById("alarm-time").value;
+    var timeArray = inputTime.split(':');
+    alarmTime.setHours(timeArray[0]);
+    alarmTime.setMinutes(timeArray[1]);
+    alarmTime.setSeconds(0);
+    var currentTime = new Date();
+    if (currentTime >= alarmTime) {
+      alarmTime.setDate(alarmTime.getDate() + 1);
+    }
+    var timeDiff = alarmTime - currentTime;
+    if (timeDiff <= 0) {
+      document.getElementById("alarm").innerHTML = "Email is scheduled for today at " + inputTime;
+    }
+    else if(alarmTime.toLocaleString()==='Invalid Date'){
+      document.getElementById("alarm").innerHTML = "Select a valid time ";
+    }
+    else {
+      setTimeout(function() {
+        document.getElementById("alarm").innerHTML = "Email sent successfully at " + alarmTime.toLocaleString();
+      }, timeDiff);
+      document.getElementById("alarm").innerHTML = "Email is scheduled for " + alarmTime.toLocaleString();
+    }
+  }
+</script>
+
+
+        
+
+    
+
+    <script>
+    function displayTime() {
+        var time = new Date();
+        var hours = time.getHours();
+        var minutes = time.getMinutes();
+        var seconds = time.getSeconds();
+        document.getElementById("time").innerHTML = hours + ":" + minutes + ":" + seconds;
+    }
+    setInterval(displayTime, 1000);
+    </script>
+
+</body>
+</html>
