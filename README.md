@@ -19,3 +19,8 @@ it.
 send multiple emails at different times.
 6. When the scheduled time for the email arrives, the email is sent to all recipients.
 7. As a result, we achieve our goal of bulk mailing and mail scheduling
+
+
+## Video Link
+
+https://drive.google.com/file/d/1E8HRdCcEB0M8on-YLRU-9vxaA8GHzscc/view?usp=sharing
